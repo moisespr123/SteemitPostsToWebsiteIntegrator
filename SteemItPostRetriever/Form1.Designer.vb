@@ -38,8 +38,8 @@ Partial Class Form1
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -173,15 +173,6 @@ Partial Class Form1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "About:"
         '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 19)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(277, 260)
-        Me.Label7.TabIndex = 0
-        Me.Label7.Text = resources.GetString("Label7.Text")
-        '
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(9, 291)
@@ -190,6 +181,15 @@ Partial Class Form1
         Me.Button2.TabIndex = 8
         Me.Button2.Text = "Donate me Bitcoin, Gridcoin, Burstcoin or STEEM"
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(6, 19)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(280, 260)
+        Me.Label7.TabIndex = 0
+        Me.Label7.Text = resources.GetString("Label7.Text")
         '
         'Form1
         '

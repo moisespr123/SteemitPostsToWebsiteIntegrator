@@ -121,7 +121,7 @@
     <value>This software will fetch your account post summary
 and send them to the database specified. Before using
 this software, you should have created the database
-and ran the MySQLSQL file script to create the table that 
+and ran the MySQL.SQL file script to create the table that 
 will store your posts summaries.
 
 To show the posts on your website, edit the
