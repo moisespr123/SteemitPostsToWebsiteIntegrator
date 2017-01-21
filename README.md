@@ -9,7 +9,7 @@ Enjoy showing your Steemit posts on your website!
 
 Do you like this software? Support me by donating some Bitcoin, Gridcoin, Burstcoin or STEEM:
 
-Bitcoin: 1CmuQdbwwgM9TnyuqNLjk7eeVhCoFbuuM3
-Gridcoin: SAw6dAHTe2oZQTkLGCRjakB5pyHBu8hsAy
-Burstcoin: BURST-SRQE-UY26-2H7P-GNX89
+Bitcoin: 1CmuQdbwwgM9TnyuqNLjk7eeVhCoFbuuM3  
+Gridcoin: SAw6dAHTe2oZQTkLGCRjakB5pyHBu8hsAy  
+Burstcoin: BURST-SRQE-UY26-2H7P-GNX89  
 STEEM: @moisesmcardona
