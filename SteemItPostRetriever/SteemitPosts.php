@@ -2,30 +2,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Steemit Posts</title>
 <style>
-@font-face {
-  font-family: 'BebasNeueRegular';
-  src: url('fonts/BebasNeue-webfont.eot');
-  src: url('fonts/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
-     url('fonts/BebasNeue-webfont.woff') format('woff'),
-     url('fonts/BebasNeue-webfont.ttf') format('truetype'),
-     url('fonts/BebasNeue-webfont.svg#BebasNeueRegular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
-@font-face {
-  font-family: 'YanoneKaffeesatzRegular';
-  src: url('fonts/YanoneKaffeesatz-Regular-webfont.eot');
-  src: url('fonts/YanoneKaffeesatz-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-     url('fonts/YanoneKaffeesatz-Regular-webfont.woff') format('woff'),
-     url('fonts/YanoneKaffeesatz-Regular-webfont.ttf') format('truetype'),
-     url('fonts/YanoneKaffeesatz-Regular-webfont.svg#YanoneKaffeesatzRegular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-
-}
-
 h3 {
     color: black;
      font-family: Arial,serif;
