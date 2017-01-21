@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label7.Text" xml:space="preserve">
-    <value>This software will fetch your account post summary
+    <value>This software will fetch your account posts summaries
 and send them to the database specified. Before using
 this software, you should have created the database
 and ran the MySQL.SQL file script to create the table that 
 will store your posts summaries.
 
-To show the posts on your website, edit the
+To show the posts summaries on your website, edit the
 SteemitPosts.php changing the MySQL Information
 to match your MySQL Server address and credentials
 and upload it to your web server. You must have PHP
