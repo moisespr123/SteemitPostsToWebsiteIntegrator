@@ -19,3 +19,5 @@ Bitcoin: 1CmuQdbwwgM9TnyuqNLjk7eeVhCoFbuuM3
 Gridcoin: SAw6dAHTe2oZQTkLGCRjakB5pyHBu8hsAy  
 Burstcoin: BURST-SRQE-UY26-2H7P-GNX89  
 STEEM: @moisesmcardona
+
+Software written by: Moises Cardona
