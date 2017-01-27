@@ -13,7 +13,7 @@ That's all!
 Enjoy showing your Steemit posts on your website!
 
 ## Updates
-v1.1 
+v1.1  
 -Allows showing or hiding Resteemed posts on a website.
 
 ## How to Update
