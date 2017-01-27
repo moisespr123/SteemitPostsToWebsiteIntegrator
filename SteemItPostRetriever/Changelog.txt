@@ -1,0 +1,6 @@
+﻿v1.0
+-Initial Release
+
+v1.1
+-New table "options" (Requires update to MySQL Database), to allow showing or hiding resteemed posts
+-Ability to show or hide resteemed posts (Requires update to PHP File and creation of the "options table")

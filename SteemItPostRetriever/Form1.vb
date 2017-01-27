@@ -22,7 +22,14 @@
                     Dim header As String = innerHTML("div.PostSummary__content > div.PostSummary__header.show-for-medium > h3 > a").Text()
                     Dim content As String = innerHTML("div.PostSummary__content > div.PostSummary__body.entry-content > a").Text()
                     Dim imagesource As String = innerHTML("a.PostSummary__image").Css("background-image")
-                    SQLInsert += "INSERT INTO posts (header, content, link, image) VALUES ('" & header.Replace("'", "\'") & "', '" & content.Replace("'", "\'").Replace("…", "...") & "', '" & SteemItURL + link & "', '" & imagesource.Remove(imagesource.Length - 1, 1).Remove(0, 4) & "'); " & vbNewLine
+                    Dim Resteemed As Integer = 0
+                    If innerHTML("div.PostSummary__reblogged_by").Text() = " Resteemed" Then Resteemed = 1
+                    SQLInsert += "INSERT INTO posts (header, content, link, image, resteemed) VALUES ('" & header.Replace("'", "\'") & "', '" & content.Replace("'", "\'").Replace("…", "...") & "', '" & SteemItURL + link & "', '" & imagesource.Remove(imagesource.Length - 1, 1).Remove(0, 4) & "', '" & Resteemed & "'); " & vbNewLine
+                    If CheckBox1.Checked = True Then
+                        SQLInsert += "UPDATE options SET value = '1' WHERE options = 'ShowResteemedPosts';"
+                    Else
+                        SQLInsert += "UPDATE options SET value = '0' WHERE options = 'ShowResteemedPosts';"
+                    End If
                 Next
                 Dim SQLConnection2 = New MySql.Data.MySqlClient.MySqlConnection(MySQLConnString)
                 SQLConnection2.Open()
@@ -76,6 +83,7 @@
             writer.WriteLine("Database=" & TextBox6.Text)
             writer.WriteLine("Username=" & TextBox4.Text)
             writer.WriteLine("Password=" & TextBox5.Text)
+            writer.WriteLine("ShowResteemedPosts=" & CheckBox1.Checked)
             writer.Close()
             counter = 0
             WebBrowser1.Navigate("https://steemit.com/@" + TextBox1.Text)
@@ -116,6 +124,10 @@
                         getdata = line.Split("=")
                         result = getdata(1)
                         TextBox5.Text = result
+                    ElseIf line.Contains("ShowResteemedPosts") Then
+                        getdata = line.Split("=")
+                        result = getdata(1)
+                        If result = True Then CheckBox1.Checked = True Else CheckBox1.Checked = False
                     End If
                 End While
             End Using

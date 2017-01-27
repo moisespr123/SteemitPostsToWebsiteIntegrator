@@ -1,4 +1,8 @@
-﻿SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+﻿-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -14,6 +18,24 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `options`
+--
+
+CREATE TABLE `options` (
+  `options` varchar(1024) NOT NULL,
+  `value` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `options`
+--
+
+INSERT INTO `options` (`options`, `value`) VALUES
+('ShowResteemedPosts', 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `posts`
 --
 
@@ -22,7 +44,8 @@ CREATE TABLE `posts` (
   `content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `link` text NOT NULL,
   `image` text NOT NULL,
-  `pkkey` int(11) NOT NULL
+  `pkkey` int(11) NOT NULL,
+  `resteemed` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
