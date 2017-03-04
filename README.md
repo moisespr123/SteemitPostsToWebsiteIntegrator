@@ -13,7 +13,7 @@ That's all!
 Enjoy showing your Steemit posts on your website!
 
 ## Updates
-v1.2 (3/4/2017) 
+v1.2 (3/4/2017)  
 -Added Spanish Language 
 
 v1.1  
