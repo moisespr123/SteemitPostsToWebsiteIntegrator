@@ -24,24 +24,28 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.WebBrowser1 = New System.Windows.Forms.WebBrowser()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.AccountNameText = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.MySQLServerText = New System.Windows.Forms.Label()
+        Me.MySQLPortText = New System.Windows.Forms.Label()
+        Me.MySQLUsernameText = New System.Windows.Forms.Label()
+        Me.MySQLPasswordText = New System.Windows.Forms.Label()
+        Me.MySQLDatabaseText = New System.Windows.Forms.Label()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.SoftwareDescriptionText = New System.Windows.Forms.Label()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'WebBrowser1
@@ -55,14 +59,14 @@ Partial Class Form1
         Me.WebBrowser1.Url = New System.Uri("", System.UriKind.Relative)
         Me.WebBrowser1.Visible = False
         '
-        'Label1
+        'AccountNameText
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(147, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Enter Steemit Account Name:"
+        Me.AccountNameText.AutoSize = True
+        Me.AccountNameText.Location = New System.Drawing.Point(12, 9)
+        Me.AccountNameText.Name = "AccountNameText"
+        Me.AccountNameText.Size = New System.Drawing.Size(147, 13)
+        Me.AccountNameText.TabIndex = 1
+        Me.AccountNameText.Text = "Enter Steemit Account Name:"
         '
         'TextBox1
         '
@@ -83,7 +87,7 @@ Partial Class Form1
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(15, 64)
+        Me.TextBox2.Location = New System.Drawing.Point(15, 67)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(158, 20)
         Me.TextBox2.TabIndex = 2
@@ -111,50 +115,50 @@ Partial Class Form1
         Me.TextBox5.Size = New System.Drawing.Size(158, 20)
         Me.TextBox5.TabIndex = 6
         '
-        'Label2
+        'MySQLServerText
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 48)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(79, 13)
-        Me.Label2.TabIndex = 8
-        Me.Label2.Text = "MySQL Server:"
+        Me.MySQLServerText.AutoSize = True
+        Me.MySQLServerText.Location = New System.Drawing.Point(12, 51)
+        Me.MySQLServerText.Name = "MySQLServerText"
+        Me.MySQLServerText.Size = New System.Drawing.Size(79, 13)
+        Me.MySQLServerText.TabIndex = 8
+        Me.MySQLServerText.Text = "MySQL Server:"
         '
-        'Label3
+        'MySQLPortText
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(12, 96)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(64, 13)
-        Me.Label3.TabIndex = 9
-        Me.Label3.Text = "MySQL Port"
+        Me.MySQLPortText.AutoSize = True
+        Me.MySQLPortText.Location = New System.Drawing.Point(12, 96)
+        Me.MySQLPortText.Name = "MySQLPortText"
+        Me.MySQLPortText.Size = New System.Drawing.Size(64, 13)
+        Me.MySQLPortText.TabIndex = 9
+        Me.MySQLPortText.Text = "MySQL Port"
         '
-        'Label4
+        'MySQLUsernameText
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 193)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(96, 13)
-        Me.Label4.TabIndex = 10
-        Me.Label4.Text = "MySQL Username:"
+        Me.MySQLUsernameText.AutoSize = True
+        Me.MySQLUsernameText.Location = New System.Drawing.Point(12, 193)
+        Me.MySQLUsernameText.Name = "MySQLUsernameText"
+        Me.MySQLUsernameText.Size = New System.Drawing.Size(96, 13)
+        Me.MySQLUsernameText.TabIndex = 10
+        Me.MySQLUsernameText.Text = "MySQL Username:"
         '
-        'Label5
+        'MySQLPasswordText
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(12, 243)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(94, 13)
-        Me.Label5.TabIndex = 11
-        Me.Label5.Text = "MySQL Password:"
+        Me.MySQLPasswordText.AutoSize = True
+        Me.MySQLPasswordText.Location = New System.Drawing.Point(12, 243)
+        Me.MySQLPasswordText.Name = "MySQLPasswordText"
+        Me.MySQLPasswordText.Size = New System.Drawing.Size(94, 13)
+        Me.MySQLPasswordText.TabIndex = 11
+        Me.MySQLPasswordText.Text = "MySQL Password:"
         '
-        'Label6
+        'MySQLDatabaseText
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 145)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(94, 13)
-        Me.Label6.TabIndex = 12
-        Me.Label6.Text = "MySQL Database:"
+        Me.MySQLDatabaseText.AutoSize = True
+        Me.MySQLDatabaseText.Location = New System.Drawing.Point(12, 145)
+        Me.MySQLDatabaseText.Name = "MySQLDatabaseText"
+        Me.MySQLDatabaseText.Size = New System.Drawing.Size(94, 13)
+        Me.MySQLDatabaseText.TabIndex = 12
+        Me.MySQLDatabaseText.Text = "MySQL Database:"
         '
         'TextBox6
         '
@@ -166,7 +170,7 @@ Partial Class Form1
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.SoftwareDescriptionText)
         Me.GroupBox1.Location = New System.Drawing.Point(191, 9)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(290, 330)
@@ -183,14 +187,14 @@ Partial Class Form1
         Me.Button2.Text = "Donate me Bitcoin, Gridcoin, Burstcoin or STEEM"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Label7
+        'SoftwareDescriptionText
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 19)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(280, 260)
-        Me.Label7.TabIndex = 0
-        Me.Label7.Text = resources.GetString("Label7.Text")
+        Me.SoftwareDescriptionText.AutoSize = True
+        Me.SoftwareDescriptionText.Location = New System.Drawing.Point(6, 19)
+        Me.SoftwareDescriptionText.Name = "SoftwareDescriptionText"
+        Me.SoftwareDescriptionText.Size = New System.Drawing.Size(280, 260)
+        Me.SoftwareDescriptionText.TabIndex = 0
+        Me.SoftwareDescriptionText.Text = resources.GetString("SoftwareDescriptionText.Text")
         '
         'CheckBox1
         '
@@ -202,26 +206,60 @@ Partial Class Form1
         Me.CheckBox1.Text = "Show Resteemed Posts"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.RadioButton1)
+        Me.GroupBox2.Controls.Add(Me.RadioButton2)
+        Me.GroupBox2.Location = New System.Drawing.Point(191, 345)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(143, 45)
+        Me.GroupBox2.TabIndex = 16
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Language"
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(9, 19)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(59, 17)
+        Me.RadioButton1.TabIndex = 17
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "English"
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
+        'RadioButton2
+        '
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Location = New System.Drawing.Point(74, 19)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(63, 17)
+        Me.RadioButton2.TabIndex = 18
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "Español"
+        Me.RadioButton2.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(532, 383)
+        Me.ClientSize = New System.Drawing.Size(491, 401)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.TextBox6)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.MySQLDatabaseText)
+        Me.Controls.Add(Me.MySQLPasswordText)
+        Me.Controls.Add(Me.MySQLUsernameText)
+        Me.Controls.Add(Me.MySQLPortText)
+        Me.Controls.Add(Me.MySQLServerText)
         Me.Controls.Add(Me.TextBox5)
         Me.Controls.Add(Me.TextBox4)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.AccountNameText)
         Me.Controls.Add(Me.WebBrowser1)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -229,27 +267,32 @@ Partial Class Form1
         Me.Text = "Steemit Posts to Website Integrator"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents WebBrowser1 As WebBrowser
-    Friend WithEvents Label1 As Label
+    Friend WithEvents AccountNameText As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents TextBox2 As TextBox
     Friend WithEvents TextBox3 As TextBox
     Friend WithEvents TextBox4 As TextBox
     Friend WithEvents TextBox5 As TextBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents Label3 As Label
-    Friend WithEvents Label4 As Label
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
+    Friend WithEvents MySQLServerText As Label
+    Friend WithEvents MySQLPortText As Label
+    Friend WithEvents MySQLUsernameText As Label
+    Friend WithEvents MySQLPasswordText As Label
+    Friend WithEvents MySQLDatabaseText As Label
     Friend WithEvents TextBox6 As TextBox
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Label7 As Label
+    Friend WithEvents SoftwareDescriptionText As Label
     Friend WithEvents Button2 As Button
     Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents RadioButton1 As RadioButton
+    Friend WithEvents RadioButton2 As RadioButton
 End Class

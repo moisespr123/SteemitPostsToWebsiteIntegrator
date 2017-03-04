@@ -36,46 +36,48 @@
                 Dim SQLCommand2 As New MySql.Data.MySqlClient.MySqlCommand(SQLInsert, SQLConnection2)
                 SQLCommand2.ExecuteNonQuery()
                 counter = 1
-                MsgBox("Posts added to database")
+                If RadioButton1.Checked = True Then MsgBox("Posts added to database.") Else MsgBox("Posts añadidos a la Base de Datos.")
             Catch ex As Exception
-                MsgBox("An error has occured. Please check the error below: " & vbNewLine & ex.ToString)
+                If RadioButton1.Checked = True Then MsgBox("An error has occured. Please check the error below: " & vbNewLine & ex.ToString) Else MsgBox("Ha ocurrido un error. Verifique el error a continuación: " & vbNewLine & ex.ToString)
             End Try
         End If
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+
         Dim ValidationError As Boolean = False
-        Dim ValidationErrorText As String = "The following fields are empty. Please fill them in order to populate the MySQL Server table with your Steemit Posts:" & vbNewLine
+        Dim ValidationErrorText As String = ""
+        If RadioButton1.Checked Then ValidationErrorText = "The following fields are empty. Please fill them in order to populate the MySQL Server table with your Steemit Posts:" & vbNewLine Else ValidationErrorText = "Los siguientes campos están vacíos. Por favor, llénelos para poder transferir sus posts a la base de datos:" & vbNewLine
         If String.IsNullOrEmpty(TextBox1.Text) Then
             ValidationError = True
-            ValidationErrorText += "-Steemit Account username is empty" & vbNewLine
+            If RadioButton1.Checked = True Then ValidationErrorText += "-Steemit Account username is empty" & vbNewLine Else ValidationErrorText += "-Nombre de usuario de Steemit está vacío" & vbNewLine
         End If
         If String.IsNullOrEmpty(TextBox2.Text) Then
             ValidationError = True
-            ValidationErrorText += "-MySQL Server Address is empty" & vbNewLine
+            If RadioButton1.Checked = True Then ValidationErrorText += "-MySQL Server Address is empty" & vbNewLine Else ValidationErrorText += "-Servidor MySQL está vacío" & vbNewLine
         End If
         If String.IsNullOrEmpty(TextBox3.Text) = False Then
             If IsNumeric(TextBox3.Text) = False Then
                 ValidationError = True
-                ValidationErrorText += "-MySQL Server Port is not numeric" & vbNewLine
+                If RadioButton1.Checked = True Then ValidationErrorText += "-MySQL Server Port is not numeric" & vbNewLine Else ValidationErrorText += "-Puerto MySQL no es numérico" & vbNewLine
             End If
         Else
             ValidationError = True
-            ValidationErrorText += "-MySQL Server Port is empty" & vbNewLine
+            If RadioButton1.Checked = True Then ValidationErrorText += "-MySQL Server Port is empty" & vbNewLine Else ValidationErrorText += "-Puerto MySQL está vacío" & vbNewLine
         End If
         If String.IsNullOrEmpty(TextBox6.Text) Then
             ValidationError = True
-            ValidationErrorText += "-MySQL Server Database is empty" & vbNewLine
+            If RadioButton1.Checked = True Then ValidationErrorText += "-MySQL Server Database is empty" & vbNewLine Else ValidationErrorText += "-Base de Datos MySQL está vacío" & vbNewLine
         End If
         If String.IsNullOrEmpty(TextBox4.Text) Then
             ValidationError = True
-            ValidationErrorText += "-MySQL Server Username is empty" & vbNewLine
+            If RadioButton1.Checked = True Then ValidationErrorText += "-MySQL Server Username is empty" & vbNewLine Else ValidationErrorText += "-Nombre de usuario MySQL está vacío" & vbNewLine
         End If
         If String.IsNullOrEmpty(TextBox5.Text) Then
             ValidationError = True
-            ValidationErrorText += "-MySQL Server Password is empty"
+            If RadioButton1.Checked = True Then ValidationErrorText += "-MySQL Server Password is empty" Else ValidationErrorText += "-Contraseña MySQL está vacío"
         End If
-        If ValidationError = False Then
+            If ValidationError = False Then
             Dim writer As New System.IO.StreamWriter("SteemitPostsToWebsiteConfig.conf", False)
             writer.WriteLine("Account=" & TextBox1.Text)
             writer.WriteLine("Server=" & TextBox2.Text)
@@ -84,6 +86,11 @@
             writer.WriteLine("Username=" & TextBox4.Text)
             writer.WriteLine("Password=" & TextBox5.Text)
             writer.WriteLine("ShowResteemedPosts=" & CheckBox1.Checked)
+            If RadioButton1.Checked = True Then
+                writer.WriteLine("Language=English")
+            Else
+                writer.WriteLine("Language=Spanish")
+            End If
             writer.Close()
             counter = 0
             WebBrowser1.Navigate("https://steemit.com/@" + TextBox1.Text)
@@ -128,7 +135,12 @@
                         getdata = line.Split("=")
                         result = getdata(1)
                         If result = True Then CheckBox1.Checked = True Else CheckBox1.Checked = False
+                    ElseIf line.Contains("Language") Then
+                        getdata = line.Split("=")
+                        result = getdata(1)
+                        If result = "English" Then RadioButton1.Checked = True Else If result = "Spanish" Then RadioButton2.Checked = True Else If String.IsNullOrEmpty(result) Then RadioButton1.Checked = True
                     End If
+                    If RadioButton1.Checked = False And RadioButton2.Checked = False Then RadioButton1.Checked = True
                 End While
             End Using
         Catch ex As Exception
@@ -137,5 +149,31 @@
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Donations_Addresses.ShowDialog()
+    End Sub
+
+    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
+        SoftwareDescriptionText.Text = My.Resources.EnglishDescription
+        AccountNameText.Text = "Enter Steemit Account Name:"
+        MySQLServerText.Text = "MySQL Server:"
+        MySQLPortText.Text = "MySQL Port:"
+        MySQLDatabaseText.Text = "MySQL Database:"
+        MySQLUsernameText.Text = "MySQL Username:"
+        MySQLPasswordText.Text = "MySQL Password:"
+        CheckBox1.Text = "Show Resteemed Posts"
+        Button1.Text = "Get Posts"
+        Button2.Text = "Donate me Bitcoin, Gridcoin, Burstcoin or STEEM"
+    End Sub
+
+    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
+        SoftwareDescriptionText.Text = My.Resources.SpanishDescription
+        AccountNameText.Text = "Entre su username de Steemit:"
+        MySQLServerText.Text = "Servidor MySQL:"
+        MySQLPortText.Text = "Puerto MySQL:"
+        MySQLDatabaseText.Text = "Base de Datos MySQL:"
+        MySQLUsernameText.Text = "Nombre de Usuario MySQL:"
+        MySQLPasswordText.Text = "Contraseña MySQL:"
+        CheckBox1.Text = "Mostrar Posts Resteemed"
+        Button1.Text = "Transferir Posts"
+        Button2.Text = "Donar Bitcoin, Gridcoin, Burstcoin o STEEM"
     End Sub
 End Class
