@@ -17,4 +17,4 @@ Enjoy showing your Steemit posts on your website!
 
 Software written by Moisés Cardona
 https://moisescardona.me
-version 1.2
+version 1.3

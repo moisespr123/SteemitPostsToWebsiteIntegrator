@@ -1,8 +1,7 @@
 ﻿Public Class Form1
     Protected pageContent As String = ""
-    Private counter As Integer = 0
     Private Sub WebBrowser1_DocumentCompleted(sender As Object, e As WebBrowserDocumentCompletedEventArgs) Handles WebBrowser1.DocumentCompleted
-        If WebBrowser1.Url().ToString = "about:blank" = False And counter = 0 Then
+        If WebBrowser1.Url().ToString = "about:blank" = False Then
             Try
                 pageContent = WebBrowser1.DocumentText
                 'SQL Info
@@ -21,7 +20,7 @@
                     Dim link As String = innerHTML("div.PostSummary__content > div.PostSummary__header.show-for-medium > h3 > a").Attr("href")
                     Dim header As String = innerHTML("div.PostSummary__content > div.PostSummary__header.show-for-medium > h3 > a").Text()
                     Dim content As String = innerHTML("div.PostSummary__content > div.PostSummary__body.entry-content > a").Text()
-                    Dim imagesource As String = innerHTML("a.PostSummary__image").Css("background-image")
+                    Dim imagesource As String = innerHTML("span.PostSummary__image").Css("background-image")
                     Dim Resteemed As Integer = 0
                     If innerHTML("div.PostSummary__reblogged_by").Text() = " Resteemed" Then Resteemed = 1
                     SQLInsert += "INSERT INTO posts (header, content, link, image, resteemed) VALUES ('" & header.Replace("'", "\'") & "', '" & content.Replace("'", "\'").Replace("…", "...") & "', '" & SteemItURL + link & "', '" & imagesource.Remove(imagesource.Length - 1, 1).Remove(0, 4) & "', '" & Resteemed & "'); " & vbNewLine
@@ -35,10 +34,11 @@
                 SQLConnection2.Open()
                 Dim SQLCommand2 As New MySql.Data.MySqlClient.MySqlCommand(SQLInsert, SQLConnection2)
                 SQLCommand2.ExecuteNonQuery()
-                counter = 1
+                Button1.Enabled = True
                 If RadioButton1.Checked = True Then MsgBox("Posts added to database.") Else MsgBox("Posts añadidos a la Base de Datos.")
             Catch ex As Exception
                 If RadioButton1.Checked = True Then MsgBox("An error has occured. Please check the error below: " & vbNewLine & ex.ToString) Else MsgBox("Ha ocurrido un error. Verifique el error a continuación: " & vbNewLine & ex.ToString)
+                Button1.Enabled = True
             End Try
         End If
     End Sub
@@ -77,22 +77,21 @@
             ValidationError = True
             If RadioButton1.Checked = True Then ValidationErrorText += "-MySQL Server Password is empty" Else ValidationErrorText += "-Contraseña MySQL está vacío"
         End If
-            If ValidationError = False Then
-            Dim writer As New System.IO.StreamWriter("SteemitPostsToWebsiteConfig.conf", False)
-            writer.WriteLine("Account=" & TextBox1.Text)
-            writer.WriteLine("Server=" & TextBox2.Text)
-            writer.WriteLine("Port=" & TextBox3.Text)
-            writer.WriteLine("Database=" & TextBox6.Text)
-            writer.WriteLine("Username=" & TextBox4.Text)
-            writer.WriteLine("Password=" & TextBox5.Text)
-            writer.WriteLine("ShowResteemedPosts=" & CheckBox1.Checked)
+        If ValidationError = False Then
+            My.Settings.Account = TextBox1.Text
+            My.Settings.Server = TextBox2.Text
+            My.Settings.Port = TextBox3.Text
+            My.Settings.Database = TextBox6.Text
+            My.Settings.Username = TextBox4.Text
+            My.Settings.Password = TextBox5.Text
+            My.Settings.ShowResteemedPosts = CheckBox1.Checked
             If RadioButton1.Checked = True Then
-                writer.WriteLine("Language=English")
+                My.Settings.Language = "English"
             Else
-                writer.WriteLine("Language=Spanish")
+                My.Settings.Language = "Spanish"
             End If
-            writer.Close()
-            counter = 0
+            My.Settings.Save()
+            Button1.Enabled = False
             WebBrowser1.Navigate("https://steemit.com/@" + TextBox1.Text)
         Else
             MsgBox(ValidationErrorText)
@@ -100,51 +99,24 @@
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim line As String
-        Dim getdata As String()
-        Dim result As String
-        Try
-            Using reader As New System.IO.StreamReader("SteemitPostsToWebsiteConfig.conf")
-                While Not reader.EndOfStream
-                    line = reader.ReadLine()
-                    If line.Contains("Account") Then
-                        getdata = line.Split("=")
-                        result = getdata(1)
-                        TextBox1.Text = result
-                    ElseIf line.Contains("Server") Then
-                        getdata = line.Split("=")
-                        result = getdata(1)
-                        TextBox2.Text = result
-                    ElseIf line.Contains("Port") Then
-                        getdata = line.Split("=")
-                        result = getdata(1)
-                        TextBox3.Text = result
-                    ElseIf line.Contains("Database") Then
-                        getdata = line.Split("=")
-                        result = getdata(1)
-                        TextBox6.Text = result
-                    ElseIf line.Contains("Username") Then
-                        getdata = line.Split("=")
-                        result = getdata(1)
-                        TextBox4.Text = result
-                    ElseIf line.Contains("Password") Then
-                        getdata = line.Split("=")
-                        result = getdata(1)
-                        TextBox5.Text = result
-                    ElseIf line.Contains("ShowResteemedPosts") Then
-                        getdata = line.Split("=")
-                        result = getdata(1)
-                        If result = True Then CheckBox1.Checked = True Else CheckBox1.Checked = False
-                    ElseIf line.Contains("Language") Then
-                        getdata = line.Split("=")
-                        result = getdata(1)
-                        If result = "English" Then RadioButton1.Checked = True Else If result = "Spanish" Then RadioButton2.Checked = True Else If String.IsNullOrEmpty(result) Then RadioButton1.Checked = True
-                    End If
-                    If RadioButton1.Checked = False And RadioButton2.Checked = False Then RadioButton1.Checked = True
-                End While
-            End Using
-        Catch ex As Exception
-        End Try
+        If String.IsNullOrEmpty(My.Settings.Account) = False Then TextBox1.Text = My.Settings.Account
+        If String.IsNullOrEmpty(My.Settings.Server) = False Then TextBox2.Text = My.Settings.Server
+        If String.IsNullOrEmpty(My.Settings.Port) = False Then TextBox3.Text = My.Settings.Port
+        If String.IsNullOrEmpty(My.Settings.Database) = False Then TextBox6.Text = My.Settings.Database
+        If String.IsNullOrEmpty(My.Settings.Username) = False Then TextBox4.Text = My.Settings.Username
+        If String.IsNullOrEmpty(My.Settings.Password) = False Then TextBox5.Text = My.Settings.Password
+        If My.Settings.ShowResteemedPosts = True Then CheckBox1.Checked = True Else CheckBox1.Checked = False
+        If String.IsNullOrEmpty(My.Settings.Language) = False Then
+            If My.Settings.Language = "English" Then
+                RadioButton1.Checked = True
+            ElseIf My.Settings.Language = "Spanish" Then
+                RadioButton2.Checked = True
+            Else
+                RadioButton1.Checked = True
+            End If
+        Else
+            RadioButton1.Checked = True
+        End If
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

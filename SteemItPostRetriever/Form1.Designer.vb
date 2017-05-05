@@ -81,7 +81,7 @@ Partial Class Form1
         Me.Button1.Location = New System.Drawing.Point(15, 317)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(158, 51)
-        Me.Button1.TabIndex = 7
+        Me.Button1.TabIndex = 8
         Me.Button1.Text = "Get Posts"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -183,7 +183,7 @@ Partial Class Form1
         Me.Button2.Location = New System.Drawing.Point(9, 291)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(274, 23)
-        Me.Button2.TabIndex = 8
+        Me.Button2.TabIndex = 9
         Me.Button2.Text = "Donate me Bitcoin, Gridcoin, Burstcoin or STEEM"
         Me.Button2.UseVisualStyleBackColor = True
         '
@@ -202,7 +202,7 @@ Partial Class Form1
         Me.CheckBox1.Location = New System.Drawing.Point(15, 292)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(139, 17)
-        Me.CheckBox1.TabIndex = 15
+        Me.CheckBox1.TabIndex = 7
         Me.CheckBox1.Text = "Show Resteemed Posts"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
