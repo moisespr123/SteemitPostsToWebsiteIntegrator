@@ -13,11 +13,18 @@ That's all!
 Enjoy showing your Steemit posts on your website!
 
 ## Updates
+v1.3 (5/5/2017)
+- Fixed Null Object Reference Exception error
+- Settings are now saved in AppData directory. You can safely delete the "SteemitPostsToWebsiteConfig.conf" file as it is no longer needed
+- Get Posts button will now be disabled while posts are getting fetched to prevent pressing it again
+- A bug that didn't checked the default language (English) when starting the software for the first time has been fixed
+- Tab Index has been fixed as well. When pressing the Tab key, it will go from "Password" to "Show Resteemed Posts" instead of the "Get Posts" button.
+
 v1.2 (3/4/2017)  
--Added Spanish Language 
+- Added Spanish Language 
 
 v1.1  
--Allows showing or hiding Resteemed posts on a website.
+- Allows showing or hiding Resteemed posts on a website.
 
 ## How to Update
 
